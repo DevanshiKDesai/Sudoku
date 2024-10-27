@@ -1,0 +1,297 @@
+body {
+  background-color: darkblue;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.btn {
+  background-color: #4CAF50; 
+  color: white; 
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px white solid;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.9);
+  height: 80px;
+  width: 280px;
+  background-color: darkblue;
+  display: grid;
+  place-items: center;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+ */
+
+ .active{
+  display: block;
+ }
+
+.screen {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-width: 400px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-screen.active {
+  transform: translateX(0);
+}
+
+.start-screen > * + * {
+  margin-top: 20px;
+}
+
+.input-name {
+  color: beige;
+  font-weight: 900;
+  height: 80px;
+  width: 300px;
+  border-radius: 20px;
+  border: 2px solid white;
+  outline: 0;
+  background-color: darkblue;
+  padding: 20px;
+  font-size: 220%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-err {
+  border-color: red;
+  animation: bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounce {
+  0% {
+      transform: translateX(0);
+  }
+  25% {
+      transform: translateX(20px);
+  }
+  50% {
+      transform: translateX(-20px);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+.main-game {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.main-game.active {
+  transform: translateX(0);
+}
+
+.main-sudoku-grid {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(9, auto);
+}
+
+.main-grid-cell {
+  height: 70px;
+  width: 70px;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.main-grid-cell.filled {
+  background-color: greenyellow;
+  color: black;
+}
+
+.main-grid-cell.selected {
+  background-color: lightskyblue;
+  color: black;
+}
+
+.main-grid-cell:hover {
+  border: 2px solid lightskyblue;
+}
+
+.main-grid-cell.hover {
+  border: 3px solid lightskyblue;
+}
+
+.main-grid-cell.err {
+  background-color: red;
+  color: white;
+}
+
+.main-game-info {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.main-game-info-box {
+  height: 45px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  padding: 0 20px;
+  font-size: x-large;
+}
+
+.main-game-info-time {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2rem;
+  margin-bottom: auto;
+}
+
+.pause-btn {
+  position: absolute;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  background-color: lightskyblue;
+  color: black;
+  font-size: x-large;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.numbers {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.number {
+  height:50px;
+  border-radius: 50px;
+  background-color: black;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.number:hover{
+  border: 3px solid lightskyblue;
+}
+
+.number:active{
+  background-color: rgba(88, 84, 84, 0.844);
+}
+
+.delete {
+  background-color: red;
+  color: white;
+  height: 50px;
+  border-radius: 50px;
+  display: grid;
+  place-items: center;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.delete:hover{
+  border: 3px solid black;
+}
+
+.pause-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+}
+
+.pause-screen.active{
+  display: flex;
+}
+
+.pause-screen > * + *{
+  margin-top: 20px;
+}
+
+.pause-screen.active .btn {
+  animation: zoom-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoom-in {
+  0% {
+      transform: scale(3);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.cell-err {
+  animation: zoom-out-shake 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoom-out-shake {
+  0% {
+      transform: scale(2);
+  }
+  25% {
+      transform: scale(2) rotate(30deg);
+  }
+  50% {
+      transform: scale(2) rotate(-30deg);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
